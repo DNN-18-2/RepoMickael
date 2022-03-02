@@ -29,15 +29,18 @@ struct color cLed[LED_COUNT] = {255, 255, 255,
 };
 
 //Parameters
-const int joyPin [2] = {A0, A1};
 const int joyBtn  = 2;
 
 //Variables
-int joyVal [NUM_JOY] = {0, 0};
+//int joyVal [NUM_JOY] = {0, 0};
+int joyX = 0;
+int joyY = 0;
+
 
 void setup() {
   //Init Joystick
-  for (int i = 0; i < NUM_JOY; i++) pinMode(joyPin[i], INPUT);
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
   pinMode(joyBtn, INPUT_PULLUP);
   Serial.begin(38400);
   Serial.println("Début de la séquence de test...");
@@ -78,10 +81,9 @@ void showDel(int delais) {
 
 void readJoystick( ) { /* function readJoystick */
   ////Test routine for Joystick
-  for (int i = 0; i < NUM_JOY; i++) {
-    joyVal[i] = analogRead(joyPin[i]);
-    Serial.print(F("joy")); Serial.print(i); Serial.print(F(" : ")); Serial.println(joyVal[i]);
-    delay(100);
+ {
+    joyX = analogRead(A0);
+    joyY = analogRead(A1);
   }
   if (!digitalRead(joyBtn)) {
     Serial.println(F("Joy Button pressed"));
