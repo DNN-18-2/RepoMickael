@@ -28,6 +28,18 @@ void loop() {
     mapX = map(xPosition, 0, 1023, -512, 512);
     mapY = map(yPosition, 0, 1023, -512, 512);
 
+    {
+
+  readmapX ();
+  delay(100);
+
+}
+{
+
+  readmapY ();
+  delay(100);
+
+}
   if ((mapX>=-515)&& (mapX<=-510)&&(mapY>=-175)&& (mapY<=-168))
  for (i = 0; i<=12; i++) {
    pixels.setPixelColor(i, pixels.Color(0, 255, 0));
@@ -47,6 +59,11 @@ void loop() {
   if (SW_state==0)
   for (i = 0; i<=12; i++) {
    pixels.setPixelColor(i, pixels.Color(0, 44, 255));
+    pixels.show();
+    }
+   if (SW_state==1)
+  for (i = 0; i<=12; i++) {
+   pixels.setPixelColor(i, pixels.Color(0, 0, 0));
     pixels.show();
     }
   delay(300);
